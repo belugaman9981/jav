@@ -39,8 +39,13 @@ public class Main {
                         break;
                     }
                     try {
-                        inputs[i] = Integer.parseInt(line);
-                        break;
+                        int val = Integer.parseInt(line);
+                        if (val < 0) {
+                            System.out.print("Negative scores not allowed. Please enter a non-negative integer: ");
+                        } else {
+                            inputs[i] = val;
+                            break;
+                        }
                     } catch (NumberFormatException e) {
                         System.out.print("Invalid input. Please enter an integer: ");
                     }
