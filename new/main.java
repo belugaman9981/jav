@@ -24,7 +24,7 @@ public class Main {
         if (targetGoal > 0) System.out.println("Target set: " + targetGoal + "\n");
         else System.out.println();
 
-        System.out.println("Enter 'q' at any prompt to quit.\n");
+        System.out.println("Enter 'q' at any prompt to quit.\n"); 
 
         while (true) {
             int[] inputs = new int[3];
