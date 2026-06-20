@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int minScore = Integer.MAX_VALUE;
-        int maxScore = Integer.MIN_VALUE;
+        int maxScore = Integer.MIN_VALUE; 
         int rounds = 0;
 
         // Ask for target goal
