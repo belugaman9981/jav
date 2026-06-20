@@ -10,14 +10,14 @@ public class Main {
         int maxScore = Integer.MIN_VALUE; 
         int rounds = 0;
 
-        // Ask for target goal
+        // Ask for target goal 
         int targetGoal = 0;
         System.out.print("Set a target score goal (or 0 to skip): ");
         while (true) {
             try {
                 targetGoal = Integer.parseInt(scanner.nextLine().trim());
                 break;
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException e) { 
                 System.out.print("Invalid input. Please enter an integer: ");
             }
         }
