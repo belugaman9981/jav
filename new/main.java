@@ -55,7 +55,7 @@ public class Main {
 
             if (quit) break;
 
-            int score = inputs[0] + inputs[1] * 2 + inputs[2] * 3;
+            int score = inputs[0] + inputs[1] * 2 + inputs[2] * 3; 
             rounds++;
 
             if (score < minScore) minScore = score;
