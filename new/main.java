@@ -108,9 +108,10 @@ public class Main { // main program class
     }
 
     static String getGrade(int score) { // returns grade label based on score
-        if (score >= 30) return "Excellent"; // highest tier
-        if (score >= 20) return "Good"; // second tier
-        if (score >= 10) return "Happy"; // third tier
-        return "Sad"; // lowest tier
+        if (score >= 40) return "Perfect"; // highest tier
+        if (score >= 30) return "Great"; // second tier
+        if (score >= 20) return "Good"; // third tier
+        if (score >= 10) return "OK"; // fourth tier
+        return "Poor"; // lowest tier
     }
 }
