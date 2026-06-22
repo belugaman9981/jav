@@ -1,5 +1,7 @@
 
 import java.util.Scanner; // for reading user input
+import java.util.ArrayList; // for storing round history
+import java.util.List; // list interface
 import java.io.FileWriter; // for writing to files
 import java.io.IOException; // for handling file errors
 
@@ -10,6 +12,7 @@ public class Main { // main program class
         int maxScore = Integer.MIN_VALUE; // track highest score seen
         int rounds = 0; // count completed rounds
         int totalScore = 0; // accumulate all scores for average
+        List<Integer> history = new ArrayList<>(); // store each round's score
 
         // Ask for target goal
         int targetGoal = 0; // will store optional target score
@@ -59,6 +62,7 @@ public class Main { // main program class
             int score = inputs[0] + inputs[1] * 2 + inputs[2] * 3; // calculate weighted score
             rounds++; // increment round counter
             totalScore += score; // add to running total
+            history.add(score); // record round score in history
 
             if (score < minScore) minScore = score; // update minimum score
             if (score > maxScore) maxScore = score; // update maximum score
@@ -76,7 +80,7 @@ public class Main { // main program class
         }
 
         if (rounds > 0) { // only show summary if any rounds played
-            String summary = buildSummary(rounds, minScore, maxScore, targetGoal, totalScore); // build summary string
+            String summary = buildSummary(rounds, minScore, maxScore, targetGoal, totalScore, history); // build summary string
             System.out.println(summary); // display summary
             saveSummary(summary); // save summary to file
         }
@@ -84,7 +88,7 @@ public class Main { // main program class
         scanner.close(); // close scanner resource
     }
 
-    static String buildSummary(int rounds, int minScore, int maxScore, int targetGoal, int totalScore) { // builds session summary text
+    static String buildSummary(int rounds, int minScore, int maxScore, int targetGoal, int totalScore, List<Integer> history) { // builds session summary text
         StringBuilder sb = new StringBuilder(); // use StringBuilder for efficiency
         sb.append("--- Session Summary ---\n"); // header line
         sb.append("Rounds played: ").append(rounds).append("\n"); // append round count
@@ -94,6 +98,11 @@ public class Main { // main program class
         if (targetGoal > 0) // only include goal line if goal was set
             sb.append("Target goal:   ").append(targetGoal).append(" — Best was ")
               .append(maxScore >= targetGoal ? "above" : "below").append(" target\n"); // compare best to goal
+        sb.append("\n--- Round History ---\n"); // history section header
+        for (int i = 0; i < history.size(); i++) { // loop through all rounds
+            int s = history.get(i); // get score for this round
+            sb.append(String.format("  Round %2d: %3d (%s)%n", i + 1, s, getGrade(s))); // append round number, score, grade
+        }
         return sb.toString(); // return finished summary
     }
 
