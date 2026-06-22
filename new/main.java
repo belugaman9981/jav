@@ -125,4 +125,3 @@ public class Main { // main program class
         return "gtfu"; // zero score
     }
 }
-
