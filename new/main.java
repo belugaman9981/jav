@@ -76,7 +76,7 @@ public class Main { // main program class
         }
 
         if (rounds > 0) { // only show summary if any rounds played
-            String summary = buildSummary(rounds, minScore, maxScore, targetGoal); // build summary string
+            String summary = buildSummary(rounds, minScore, maxScore, targetGoal, totalScore); // build summary string
             System.out.println(summary); // display summary
             saveSummary(summary); // save summary to file
         }
@@ -84,10 +84,11 @@ public class Main { // main program class
         scanner.close(); // close scanner resource
     }
 
-    static String buildSummary(int rounds, int minScore, int maxScore, int targetGoal) { // builds session summary text
+    static String buildSummary(int rounds, int minScore, int maxScore, int targetGoal, int totalScore) { // builds session summary text
         StringBuilder sb = new StringBuilder(); // use StringBuilder for efficiency
         sb.append("--- Session Summary ---\n"); // header line
         sb.append("Rounds played: ").append(rounds).append("\n"); // append round count
+        sb.append(String.format("Average score: %.1f%n", (double) totalScore / rounds)); // append average score
         sb.append("Best score:    ").append(maxScore).append(" (").append(getGrade(maxScore)).append(")\n"); // append best score
         sb.append("Worst score:   ").append(minScore).append(" (").append(getGrade(minScore)).append(")\n"); // append worst score
         if (targetGoal > 0) // only include goal line if goal was set
