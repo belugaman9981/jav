@@ -112,6 +112,7 @@ public class Main { // main program class
         if (score >= 30) return "Great"; // second tier
         if (score >= 20) return "Good"; // third tier
         if (score >= 10) return "OK"; // fourth tier
-        return "Poor"; // lowest tier
+        if (score > 0) return "Poor"; // fifth tier
+        return "gtfu"; // zero score
     }
 }
