@@ -9,6 +9,7 @@ public class Main { // main program class
         int minScore = Integer.MAX_VALUE; // track lowest score seen
         int maxScore = Integer.MIN_VALUE; // track highest score seen
         int rounds = 0; // count completed rounds
+        int totalScore = 0; // accumulate all scores for average
 
         // Ask for target goal
         int targetGoal = 0; // will store optional target score
@@ -57,12 +58,14 @@ public class Main { // main program class
 
             int score = inputs[0] + inputs[1] * 2 + inputs[2] * 3; // calculate weighted score
             rounds++; // increment round counter
+            totalScore += score; // add to running total
 
             if (score < minScore) minScore = score; // update minimum score
             if (score > maxScore) maxScore = score; // update maximum score
 
             System.out.println("Total score: " + score); // display score
             System.out.println("Result: " + getGrade(score)); // display grade
+            System.out.printf("Average score so far: %.1f%n", (double) totalScore / rounds); // display running average
             if (targetGoal > 0) { // check if goal was set
                 if (score >= targetGoal) // compare score to goal
                     System.out.println("Goal reached! (" + score + " / " + targetGoal + ")"); // success message
