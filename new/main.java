@@ -11,5 +11,3 @@
      }
      balance -= amount;
  }
-
- 
